@@ -1,0 +1,41 @@
+// Created by kl2dfg (processFunction)
+{
+  "objectType" : "Func",
+  "metadata" : {
+    "uiTooltip" : "BVH reader, default constructor\n\nSupported types:\n  filePath: FilePath\n  result: BVHReader\n"
+    },
+  "title" : "BVHReader",
+  "ports" : [
+    {
+      "objectType" : "ExecPort",
+      "name" : "exec",
+      "nodePortType" : "IO",
+      "execPortType" : "IO",
+      "typeSpec" : "Execute"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "filePath",
+      "nodePortType" : "Out",
+      "execPortType" : "In",
+      "typeSpec" : "FilePath"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "result",
+      "nodePortType" : "In",
+      "execPortType" : "Out",
+      "typeSpec" : "BVHReader"
+      }
+    ],
+  "extDeps" : {
+    "BVHArchive" : "*"
+    },
+  "presetGUID" : "422DBDEC3E13CA8F89413C8524B67B31",
+  "code" : "require BVHArchive;
+
+dfgEntry {
+  result = BVHReader(filePath);
+}
+"
+  }

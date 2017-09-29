@@ -1,0 +1,41 @@
+// Created by kl2dfg (processFunction)
+{
+  "objectType" : "Func",
+  "metadata" : {
+    "uiTooltip" : "Outputs the BVH's timestep.\n\nSupported types:\n  this: BVHReader\n  result: Scalar\n"
+    },
+  "title" : "GetTimestep",
+  "ports" : [
+    {
+      "objectType" : "ExecPort",
+      "name" : "exec",
+      "nodePortType" : "IO",
+      "execPortType" : "IO",
+      "typeSpec" : "Execute"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "this",
+      "nodePortType" : "Out",
+      "execPortType" : "In",
+      "typeSpec" : "BVHReader"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "result",
+      "nodePortType" : "In",
+      "execPortType" : "Out",
+      "typeSpec" : "Scalar"
+      }
+    ],
+  "extDeps" : {
+    "BVHArchive" : "*"
+    },
+  "presetGUID" : "19418EFB204BD35D91C215A585E82780",
+  "code" : "require BVHArchive;
+
+dfgEntry {
+  result = this.getTimestep();
+}
+"
+  }
