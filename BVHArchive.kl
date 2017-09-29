@@ -16,7 +16,7 @@ object BVHReader {
 };
 
 /// \dfgPresetTitle BVHReader
-/// \dfgPresetFolder BVHReader
+/// \dfgPresetFolder BVHArchive
 /// BVH reader, default constructor
 function BVHReader(FilePath filePath) {
   this.filePath = filePath;
@@ -44,31 +44,31 @@ function BVHReader.setCharacter!() {
   this.character.incrementVersion();
 }
 
-/// \dfgPresetFolder BVHReader
+/// \dfgPresetFolder BVHArchive
 /// Outputs the character with a skeleton and all its motion clips.
 function Character BVHReader.getCharacter() {
   return this.character;
 }
 
-/// \dfgPresetFolder BVHReader
+/// \dfgPresetFolder BVHArchive
 /// Outputs total frames, as declared in the BVH file.
 function Scalar BVHReader.getTotalFrames() {
   return this.frames;
 }
 
-/// \dfgPresetFolder BVHReader
+/// \dfgPresetFolder BVHArchive
 /// Outputs the BVH's timestep.
 function Scalar BVHReader.getTimestep() {
   return this.timestep;
 }
 
-/// \dfgPresetFolder BVHReader
+/// \dfgPresetFolder BVHArchive
 /// Outputs the BVH's FPS.
 function Scalar BVHReader.getFPS() {
   return 1/this.timestep;
 }
 
-/// \dfgPresetFolder BVHReader
+/// \dfgPresetFolder BVHArchive
 /// Decompose BVH's public properties for Canvas use.
 function BVHReader.decompose(
   out FilePath filePath,
@@ -285,7 +285,6 @@ function BVHReader.readNodes!() {
         // KeyframeTrackSet xfoTs(bone.name, Xfo(), TRACKSETFLAG_TR_TRACKS+TRACKSETFLAG_ORI_TRACKS);
         // this.clip.addTrackSet(xfoTs);
         // Fabric Engine >= 2.6, AnimX Ext
-        report('Adding ' + bone.name + ' curves.');
         this.clip.addCurve(bone.name+'.tr.x', true, Color(1.0, 0.0, 0.0));
         this.clip.addCurve(bone.name+'.tr.y', true, Color(0.0, 1.0, 0.0));
         this.clip.addCurve(bone.name+'.tr.z', true, Color(0.0, 0.0, 1.0));
@@ -301,7 +300,6 @@ function BVHReader.readNodes!() {
         // KeyframeTrackSet rotTs(bone.name, Quat(), TRACKSETFLAG_ORI_TRACKS);
         // this.clip.addTrackSet(rotTs);
         // Fabric Engine >= 2.6, AnimX Ext
-        report('Adding ' + bone.name + ' curves.');
         this.clip.addCurve(bone.name+'.euler.x', true, Color(1.0, 0.0, 0.0));
         this.clip.addCurve(bone.name+'.euler.y', true, Color(0.0, 1.0, 0.0));
         this.clip.addCurve(bone.name+'.euler.z', true, Color(0.0, 0.0, 1.0));
